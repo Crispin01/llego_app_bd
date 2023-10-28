@@ -1,0 +1,46 @@
+{
+    "eventos" : [
+        {
+            "id" :"evento1",
+            "nombre" : "Fiesta de halloween",
+            "lugar" : "Casa de Joseph",
+            "fecha" : "2023-10-13 23:45:00",
+            "notas" : "Venir disfrazados"
+        },
+        {
+            "id" :"evento2",
+            "nombre" : "Fiesta de Luchito",
+            "lugar" : "Casa de Hubert",
+            "fecha" : "2023-10-14 22:45:00",
+            "notas" : "Venir sin plata"
+        },
+        {   
+            "id" :"evento3",
+            "nombre" : "Fiesta de Pou",
+            "lugar" : "Tu casa",
+            "fecha" : "2023-10-16 13:45:00",
+            "notas" : "Tener instalado Pou"
+        },
+        {
+            "id" :"evento4",
+            "nombre" : "GYM",
+            "lugar" : "Olaya Ruta D",
+            "fecha" : "2023-10-20 09:45:00",
+            "notas" : "Traer agua"
+        },
+        {
+            "id" :"evento5",
+            "nombre" : "Sábado de Rompe",
+            "lugar" : "Discoteca",
+            "fecha" : "2023-10-21 22:45:00",
+            "notas" : "Traer 100soles min"
+        },
+        {
+            "id" :"evento6",
+            "nombre" : "Domingo de Misa",
+            "lugar" : "La parroquia de tu barrio",
+            "fecha" : "2023-10-15 06:00:00",
+            "notas" : "Traer tu biblia"
+        }
+    ]
+}

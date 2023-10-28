@@ -8,10 +8,22 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
+
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card *ngFor="let evento of eventos" 
+  (click)="verDetalle(evento)">
+    
+    <ion-card-title size="large">{{ evento.nombre | uppercase }}</ion-card-title>
+    <ion-card-subtitle>{{ evento.fecha | date : "dd/MM/y hh:mm:a" }}</ion-card-subtitle>
+    <ion-card-content>
+      <b>Lugar : </b>{{ evento.lugar }}<br>
+      <b>Notas : </b>{{ evento.notas }}
+    </ion-card-content>
+
+    <ion-button size="small"  color="success">Llego!</ion-button>
+    <ion-button size="small" color="danger">No la hago</ion-button>
+
+  </ion-card>
 </ion-content>
+
