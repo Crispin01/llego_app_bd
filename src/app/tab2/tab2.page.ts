@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  amigos : any = [];
+  constructor(
+    private http : HttpClient,
+    private route: Router
+    )
+    {
+    this.http.get<any>('http://localhost:3000/amigos/listado')
+    .subscribe(data => {
+      console.log('amigos', data);
+      this.amigos = data.amigos;
+    })
+  }
+  verDetalle(amigo:any){
+    // console.log(amigo)
+    this.route.navigate(['/amigo/'+amigo._id]);
+  }
 
 }

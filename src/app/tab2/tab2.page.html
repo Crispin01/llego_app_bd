@@ -8,10 +8,18 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
+
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card *ngFor="let amigo of amigos" 
+  (click)="verDetalle(amigo)">
+    
+    <ion-card-title size="large">{{ amigo.nombre_completo | uppercase }}</ion-card-title>
+    <ion-card-subtitle>{{ amigo.cumpleanos | date : "dd/MM/y hh:mm:a" }}</ion-card-subtitle>
+    <ion-card-content>
+      <b>telefono : </b>{{ amigo.telefono }}<br>
+    </ion-card-content>
+    
+  </ion-card>
 </ion-content>
+
