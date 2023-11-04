@@ -26,4 +26,8 @@ export class Tab2Page {
     this.route.navigate(['/amigo/'+amigo._id]);
   }
 
+  registrar(){
+    // console.log(evento)
+    this.route.navigate(['/registraramigo/']);
+  }
 }

@@ -25,4 +25,9 @@ export class Tab1Page {
     // console.log(evento)
     this.route.navigate(['/evento/'+evento._id]);
   }
+
+  registrar(){
+    // console.log(evento)
+    this.route.navigate(['/registrarevento/']);
+  }
 }

@@ -16,9 +16,9 @@ export class AmigoPage implements OnInit {
     private http : HttpClient) {
 
       this.route.params.subscribe(params => {
-        const evento_id = params['id'];
+        const amigo_id = params['id'];
         //llamamos nuevamente a todo el JSON de amigos
-        this.http.get<any>('http://localhost:3000/amigos/detalle/'+ evento_id)
+        this.http.get<any>('http://localhost:3000/amigos/detalle/'+ amigo_id)
         .subscribe(data => {
           console.log('amigos',data);
           this.amigo = data.amigo;

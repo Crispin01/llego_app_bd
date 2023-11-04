@@ -13,6 +13,14 @@ const routes: Routes = [
   {
     path: 'amigo/:id',
     loadChildren: () => import('./amigo/amigo.module').then( m => m.AmigoPageModule)
+  },
+  {
+    path: 'registrarevento',
+    loadChildren: () => import('./registrarevento/registrarevento.module').then( m => m.RegistrareventoPageModule)
+  },
+  {
+    path: 'registraramigo',
+    loadChildren: () => import('./registraramigo/registraramigo.module').then( m => m.RegistraramigoPageModule)
   }
 ];
 @NgModule({
