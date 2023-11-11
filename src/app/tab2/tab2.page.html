@@ -14,7 +14,7 @@
   <ion-card *ngFor="let amigo of amigos" 
   (click)="verDetalle(amigo)">
     
-    <ion-card-title size="large">{{ amigo.nombre_completo | uppercase }}</ion-card-title>
+    <ion-card-title size="large">{{ amigo.nombre | uppercase }}</ion-card-title>
     <ion-card-subtitle>{{ amigo.cumpleanos | date : "dd/MM/y hh:mm:a" }}</ion-card-subtitle>
     <ion-card-content>
       <b>telefono : </b>{{ amigo.telefono }}<br>

@@ -28,4 +28,11 @@
 
 <ion-button expand="block"  color="success" class="ion-margin" (click)="guardar()">Registrar</ion-button>
 
+<ion-alert
+  [isOpen]="notificar"
+  header="Evento registrado exitosamente"
+  message="Puedes ir a los eventos para verlo"
+  [buttons]="botones"
+></ion-alert>
+
 </ion-content>

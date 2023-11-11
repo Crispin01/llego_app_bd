@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registraramigo',
@@ -11,18 +13,40 @@ export class RegistraramigoPage implements OnInit {
   telefono : any = '';
   cumpleanos : any = '';
 
-  constructor() { }
+  notificar : boolean = false;
+
+  botones = [
+    {
+      text: ' Regresar',
+      handler: () => {
+        this.route.navigate(['/tabs/tab2']);
+      },
+    },
+  ];  
+
+  constructor(
+    private http : HttpClient,
+    private route: Router
+  ) { }
 
   ngOnInit() {
   }
 
   guardar() {
-    let data = {
+    let valores = {
       'nombre' : this.nombre,
       'telefono' : this.telefono,
       'cumpleanos' : this.cumpleanos
     }
-    console.log(data)
+    let url = 'http://localhost:3000/amigos/registrar';
+    this.http.post(url, valores)
+    .subscribe(data => {
+    console.log('respuesta', data);
+      
+      this.notificar = true;
+      
+    })
+    //console.log(data)
   }
 
 }

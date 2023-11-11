@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrarevento',
@@ -12,18 +14,39 @@ export class RegistrareventoPage implements OnInit {
   lugar : any = '';
   notas : any = '';
 
-  constructor() { }
+  notificar : boolean = false;
+
+  botones = [
+    {
+      text: ' Regresar',
+      handler: () => {
+        this.route.navigate(['/tabs/tab1']);
+      },
+    },
+  ];
+  constructor(
+    private http : HttpClient,
+    private route: Router
+  ) { }
 
   ngOnInit() {
   }
 
   guardar() {
-    let data = {
+    let valores = {
       'nombre' : this.nombre,
       'lugar' : this.lugar,
       'fecha' : this.fecha,
       'notas' : this.notas
     }
-    console.log(data)
+    let url = 'http://localhost:3000/eventos/registrar';
+    this.http.post(url, valores)
+    .subscribe(data => {
+    console.log('respuesta', data);
+      
+      this.notificar = true;
+      
+    })
+    //console.log(data)
   }
 }
