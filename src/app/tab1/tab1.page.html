@@ -11,7 +11,7 @@
 
   </ion-header>
 
-  <ion-card *ngFor="let evento of eventos" 
+  <ion-card *ngFor="let evento of eventos | async" 
   (click)="verDetalle(evento)">
     
     <ion-card-title size="large">{{ evento.nombre | uppercase }}</ion-card-title>

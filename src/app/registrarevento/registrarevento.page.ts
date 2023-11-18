@@ -28,7 +28,11 @@ export class RegistrareventoPage implements OnInit {
     private http : HttpClient,
     private route: Router
   ) { }
-
+  // FUNCION DE REGRESAR LA PAGINA- BOTON 
+  regresar() {
+    // Utiliza el NavController para regresar a la página anterior
+    this.route.navigate(['/tabs/tab1']);
+  }
   ngOnInit() {
   }
 

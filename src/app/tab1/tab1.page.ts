@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs'
+
 
 @Component({
   selector: 'app-tab1',
@@ -9,17 +12,30 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
 
-  eventos : any = [];
+  eventos : Observable<any[]>;
+  firestore: Firestore = inject(Firestore);
   constructor(
     private http : HttpClient,
     private route: Router
     )
     {
-    this.http.get<any>('http://localhost:3000/eventos/listado')
-    .subscribe(data => {
-      console.log('eventos', data);
-      this.eventos = data.eventos;
-    })
+
+    //VALIDAMOS SI ESTAMOS LOGEADOS
+    let user = localStorage.getItem('user');
+    if (user == null) {
+      this.route.navigate(['/login/']);
+    }
+    //TRAEMOS LOS EVENTOS DE FIREBASE
+    const eventoCollection = collection(this.firestore,'eventos');
+    this.eventos = collectionData(eventoCollection);
+
+    //FIN DEL CONSTRUCTOR
+
+    // this.http.get<any>('http://localhost:3000/eventos/listado')
+    // .subscribe(data => {
+    //   console.log('eventos', data);
+    //   this.eventos = data.eventos;
+    // })
   }
   verDetalle(evento:any){
     // console.log(evento)
