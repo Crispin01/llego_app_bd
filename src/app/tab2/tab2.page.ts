@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs'
+
 
 @Component({
   selector: 'app-tab2',
@@ -9,17 +12,30 @@ import { Router } from '@angular/router';
 })
 export class Tab2Page {
 
-  amigos : any = [];
+  amigos : Observable<any[]>;
+  firestore: Firestore = inject(Firestore);
   constructor(
     private http : HttpClient,
     private route: Router
     )
     {
-    this.http.get<any>('http://localhost:3000/amigos/listado')
-    .subscribe(data => {
-      console.log('amigos', data);
-      this.amigos = data.amigos;
-    })
+
+      //VALIDAMOS SI ESTAMOS LOGEADOS
+    let user = localStorage.getItem('user');
+    if (user == null) {
+      this.route.navigate(['/login/']);
+    }
+    //TRAEMOS LOS AMIGOS DE FIREBASE
+    const amigoCollection = collection(this.firestore,'amigos');
+    this.amigos = collectionData(amigoCollection);
+
+    //FIN DEL CONSTRUCTOR
+
+    // this.http.get<any>('http://localhost:3000/amigos/listado')
+    // .subscribe(data => {
+    //   console.log('amigos', data);
+    //   this.amigos = data.amigos;
+    // })
   }
   verDetalle(amigo:any){
     // console.log(amigo)
@@ -27,7 +43,7 @@ export class Tab2Page {
   }
 
   registrar(){
-    // console.log(evento)
+    // console.log(amigo)
     this.route.navigate(['/registraramigo/']);
   }
 }

@@ -11,7 +11,7 @@
 
   </ion-header>
 
-  <ion-card *ngFor="let amigo of amigos" 
+  <ion-card *ngFor="let amigo of amigos | async" 
   (click)="verDetalle(amigo)">
     
     <ion-card-title size="large">{{ amigo.nombre | uppercase }}</ion-card-title>
