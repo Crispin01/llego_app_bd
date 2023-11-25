@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+//Agrega los import necesarios
+import { Firestore,addDoc, collection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-registraramigo',
@@ -12,8 +14,11 @@ export class RegistraramigoPage implements OnInit {
   nombre : any = '';
   telefono : any = '';
   cumpleanos : any = '';
+  email : any = '';
+  contrasena : any = '';
 
   notificar : boolean = false;
+  firestore: Firestore = inject(Firestore);
 
   botones = [
     {
@@ -36,17 +41,23 @@ export class RegistraramigoPage implements OnInit {
     let valores = {
       'nombre' : this.nombre,
       'telefono' : this.telefono,
-      'cumpleanos' : this.cumpleanos
+      'cumpleanos' : this.cumpleanos,
+      'email' : this.email,
+      'contrasena' : this.contrasena
+
     }
-    let url = 'http://localhost:3000/amigos/registrar';
-    this.http.post(url, valores)
-    .subscribe(data => {
-    console.log('respuesta', data);
+    // let url = 'http://localhost:3000/amigos/registrar';
+    // this.http.post(url, valores)
+    // .subscribe(data => {
+    // console.log('respuesta', data);
       
-      this.notificar = true;
+    //   this.notificar = true;
       
-    })
-    //console.log(data)
+    // })
+    console.log(valores)
+
+    addDoc(collection(this.firestore, "amigos"), valores);
+    this.notificar = true;
   }
 
 }

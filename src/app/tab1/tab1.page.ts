@@ -27,7 +27,9 @@ export class Tab1Page {
     }
     //TRAEMOS LOS EVENTOS DE FIREBASE
     const eventoCollection = collection(this.firestore,'eventos');
-    this.eventos = collectionData(eventoCollection);
+    this.eventos = collectionData(eventoCollection, {
+      idField: '_id'
+    });
 
     //FIN DEL CONSTRUCTOR
 

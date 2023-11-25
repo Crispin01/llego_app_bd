@@ -27,7 +27,9 @@ export class Tab2Page {
     }
     //TRAEMOS LOS AMIGOS DE FIREBASE
     const amigoCollection = collection(this.firestore,'amigos');
-    this.amigos = collectionData(amigoCollection);
+    this.amigos = collectionData(amigoCollection, {
+      idField: '_id'
+    });
 
     //FIN DEL CONSTRUCTOR
 
