@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registrar local</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-item fill="outline" class="ion-margin">
+  <ion-label position="floating">Nombre</ion-label>
+  <ion-input placeholder="Escribir" [(ngModel)]="nombre"></ion-input>
+</ion-item>
+
+<ion-item fill="outline" class="ion-margin">
+  <ion-label position="floating">Ciudad</ion-label>
+  <ion-input placeholder="Escribir" [(ngModel)]="ciudad"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-select label="Seleccione Tipo" label-placement="fixed" placeholder="Favorite fruit" [(ngModel)]="tipo">
+    <ion-select-option value="negocios" >negocios</ion-select-option>
+    <ion-select-option value="entretenimiento" >entretenimiento</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item fill="outline" class="ion-margin">
+  <ion-label position="floating">costo</ion-label>
+  <ion-input placeholder="Escribir" [(ngModel)]="costo"></ion-input>
+</ion-item>
+
+<ion-item fill="outline" class="ion-margin">
+  <ion-label position="floating">Extra Chamos</ion-label>
+  <ion-input placeholder="Escribir" [(ngModel)]="chamos"></ion-input>
+</ion-item>
+
+<ion-button expand="block"  color="success" class="ion-margin" (click)="guardar()">Registrar</ion-button>
+
+<ion-alert
+  [isOpen]="notificar"
+  header="Evento registrado exitosamente"
+  message="Puedes ir a los eventos para verlo"
+  [buttons]="botones"
+></ion-alert>
+
+<ion-button (click)="regresar()">Regresar</ion-button>
+
+
+</ion-content>

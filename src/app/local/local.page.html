@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Local</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <h1>{{ local?.nombre }}</h1>
+    
+    <h5>Telefono: {{local?.ciudad}}</h5>
+    <h3>Cumpleaños: {{ local?.costo }}</h3>
+    
+    <h3>tipo: {{ local?.tipo}}</h3>
+
+    <h5>EXTRA CHAMOS: {{ local?.chamos}}</h5>
+  </ion-card>
+
+</ion-content>

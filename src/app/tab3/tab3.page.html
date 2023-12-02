@@ -8,10 +8,28 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
+
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card *ngFor="let local of locals | async" 
+  (click)="verDetalle(local)">
+    
+    <ion-card-title size="large">{{ local.nombre | uppercase }}</ion-card-title>
+    <ion-card-subtitle>{{ local.chamos }}</ion-card-subtitle>
+    <ion-card-content>
+      <b>ciudad : </b>{{ local.ciudad }}<br>
+      <b>costo : </b>{{ local.costo }}<br>
+
+      
+
+    </ion-card-content>
+    
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="registrar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button> 
+  </ion-fab>
+
 </ion-content>
